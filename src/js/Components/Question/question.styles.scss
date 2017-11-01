@@ -30,6 +30,7 @@
   }
 
   &.success{
+    background: linear-gradient(to bottom, transparentize(#fbd606, .3), transparentize($warning-color, .31));
     &:after{
       background: linear-gradient(to bottom, $success-color, $info-color);
       opacity: 1;

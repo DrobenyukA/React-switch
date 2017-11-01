@@ -88,8 +88,8 @@ Question.defaultProps = {
 
     ],
     onChange: (value, id) => {
-        // This function should be from container component and have the login to verify the value.
-        // In this case this is only demonstration example
+        // This function is only demonstration example of simple logic of component
+
         rules[id] = value;
 
         const result = Object.keys(rules).reduce((prev, current) => {
