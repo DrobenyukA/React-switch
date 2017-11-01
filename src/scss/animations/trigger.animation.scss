@@ -1,0 +1,21 @@
+@keyframes triggerOn {
+  from {
+    left: 0;
+    margin-left:0;
+  }
+  to {
+    left: 100%;
+    margin-left:-50%;
+  }
+}
+
+@keyframes triggerOff {
+  from {
+    left: 100%;
+    margin-left:-50%;
+  }
+  to {
+    left: 0;
+    margin-left:0;
+  }
+}

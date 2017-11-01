@@ -1,0 +1,21 @@
+@import "../theme.vars";
+
+@keyframes labelOff {
+  from {
+    color: $default-color;
+  }
+  to {
+    //color: $danger-color;
+    color: inherit;
+  }
+}
+
+@keyframes labelOn {
+  from {
+    //color: $danger-color;
+    color: inherit;
+  }
+  to {
+    color: $default-color;
+  }
+}
