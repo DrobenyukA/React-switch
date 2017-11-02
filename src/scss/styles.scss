@@ -1,0 +1,32 @@
+@import "theme.vars";
+
+@import "../js/Components/Question/question.mixin";
+
+@import "../js/Components/Switch/switch.mixin";
+
+html{
+  font-family:"Muli", sans-serif;
+  font-size: 14px;
+}
+
+// Some normalize :)
+* {
+  box-sizing: border-box;
+}
+
+// Page styles
+
+.question {
+  @include question();
+
+  @include switch();
+
+  &.warning{
+    @include switch-warning();
+  }
+
+  &.success{
+    @include switch-success();
+  }
+
+}

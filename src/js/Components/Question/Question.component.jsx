@@ -3,10 +3,6 @@ import PropTypes from "prop-types";
 
 import Switch from "../Switch/Switch.component";
 
-import "./question.styles";
-
-const rules = {"1": false, "2": false, "3": false};
-
 class Question extends Component {
 
     constructor(props) {
@@ -16,7 +12,7 @@ class Question extends Component {
 
         this.state = {
             className: this.defaultClassName,
-            result: "" // The answer is correct
+            result: ""
         }
     }
 
@@ -64,6 +60,8 @@ Question.PropsTypes = {
  * This is only in demonstration purpose:
  *
  */
+const rules = {"1": false, "2": false, "3": false};
+
 Question.defaultProps = {
     question: "Some question with few conditions",
     conditions: [
@@ -88,7 +86,7 @@ Question.defaultProps = {
 
     ],
     onChange: (value, id) => {
-        // This function is only demonstration example of simple logic of component
+        /** This function is only demonstration example of simple logic of component */
 
         rules[id] = value;
 

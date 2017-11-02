@@ -1,0 +1,76 @@
+/**
+  * This files are here to prevent double declaration of default colors, animations
+  * and separate different staff for better maintenance
+  */
+@import "../../../scss/theme.vars";
+@import "../../../scss/animations/opacity.animation";
+
+/**
+ * In case that we want to have different styles for few questions
+ */
+@mixin question(
+  $text-color: $default-color,
+  $default-background: linear-gradient(to bottom, transparentize($warning-color, .3), transparentize($danger-color, .31)),
+  $warning-background: linear-gradient(to bottom, transparentize($attention-color, .3), transparentize($warning-color, .31)),
+  $success-background: linear-gradient(to bottom, $success-color, $info-color),
+  $border-radius: 8px,
+  $shadow-color: #A7C4DC,
+  $shadow: 0 2px 12px 6px transparentize($shadow-color, .5),
+  $background-duration: 1s,
+  $max-width: 710px,
+  $margin: 0 auto,
+  $padding: 45px 15px
+){
+  position: relative;
+  width: 100%;
+  max-width: $max-width;
+  padding: $padding;
+  margin: 0 auto;
+  border-radius: $border-radius;
+  background: $default-background;
+  box-shadow: $shadow;
+  overflow: hidden;
+  &:before, &:after{
+    content: '';
+    position: absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    opacity:0;
+    transition: opacity $background-duration;
+  }
+
+  &.warning{
+    &:before{
+      background: $warning-background;
+      opacity: 1;
+    }
+  }
+
+  &.success{
+    background: $warning-background;
+    &:after{
+      background: $success-background;
+      opacity: 1;
+    }
+  }
+
+  &-text,
+  &-result{
+    position: relative;
+    color: $text-color;
+    text-align: center;
+    font-weight: bold;
+    z-index: 5;
+  }
+
+  &-text{
+    font-size: 1.2857rem;
+  }
+
+  &-result{
+    min-height: 1.3rem;
+  }
+
+}

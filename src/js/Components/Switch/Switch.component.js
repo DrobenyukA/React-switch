@@ -1,10 +1,6 @@
 import React, {Component} from "react";
 import PropTypes from "prop-types";
 
-import "../../../scss/animations/trigger.animation";
-import "../../../scss/animations/label.animation";
-import "./switch.styles";
-
 class Switch extends Component {
     constructor(props){
         super(props);

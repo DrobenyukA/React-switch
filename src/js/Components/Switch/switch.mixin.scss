@@ -1,0 +1,160 @@
+@import "../../../scss/theme.vars";
+@import "../../../scss/animations/trigger.animation";
+@import "../../../scss/animations/label.animation";
+
+@mixin switch(
+  $height: 45px,
+  $border: 1px solid #fbfbfb,
+  $border-radius: 100px,
+  $duration: 500ms,
+  $default-text-color: $danger-color,
+  $label-text-color: $default-color,
+  $button-background: #f9f9f9,
+  $max-width: 320px
+){
+  .switch {
+
+    position: relative;
+    display: flex;
+    width: 100%;
+    max-width: $max-width;
+    height: $height;
+    margin: 19px auto;
+    align-items: center;
+    justify-content: space-around;
+    border-radius: $border-radius;
+    border: $border;
+    color: $default-text-color;
+    cursor: pointer;
+    z-index: 10;
+
+    .label {
+      position: relative;
+      flex: 2;
+      text-align: center;
+      font-family: inherit;
+      font-weight: bold;
+      letter-spacing: 0.4px;
+      padding: 0 10px;
+      z-index: 20;
+      user-select: none;
+    }
+
+    button {
+      position: absolute;
+      top: -1px;
+      width: 50%;
+      height: $height;
+      border-radius: $border-radius;
+      border: $border;
+      background: transparentize($button-background, .4);
+      cursor: pointer;
+      color: transparent;
+      outline: none;
+      box-shadow: 0 0 6px 1px transparentize($default-text-color, .2);
+      transition: box-shadow, background $duration;
+      user-select: none;
+      z-index: 15;
+      &:focus {
+        //TODO: set focus styles for keyboard navigation
+        border-color: #fff;
+      }
+
+    }
+
+    &:hover {
+      button{
+        background: transparentize($button-background, .2);
+      }
+    }
+    &.on {
+
+      button {
+        left: 100%;
+        margin-left: -50%;
+      }
+
+      .label {
+        &:first-child {
+          color: $label-text-color;
+        }
+
+        &:last-child {
+          color: inherit;
+        }
+      }
+
+      &.animated {
+        button {
+          animation-name: triggerOn;
+          animation-duration: $duration;
+        }
+        .label {
+          &:first-child {
+            animation-name: labelOn;
+            animation-duration: $duration;
+          }
+          &:last-child {
+            animation-name: labelOff;
+            animation-duration: $duration;
+          }
+        }
+      }
+
+    }
+
+    &.off {
+      button {
+        left: 0;
+        margin-left: 0;
+      }
+
+      .label {
+        &:first-child {
+          color: inherit;
+        }
+
+        &:last-child {
+          color: $label-text-color;
+        }
+      }
+
+      &.animated {
+        button {
+          animation-name: triggerOff;
+          animation-duration: $duration;
+        }
+
+        .label {
+          &:first-child {
+            animation-name: labelOff;
+            animation-duration: $duration;
+          }
+          &:last-child {
+            animation-name: labelOn;
+            animation-duration: $duration;
+          }
+        }
+
+      }
+    }
+  }
+}
+
+@mixin switch-success($success-color: #00b093){
+  .switch{
+    color: $success-color;
+    button{
+      box-shadow: 0 0 6px 1px transparentize($success-color, .2);
+    }
+  }
+}
+
+@mixin switch-warning($warning-color: $warning-color){
+  .switch{
+    color: $warning-color;
+    button{
+      box-shadow: 0 0 6px 1px transparentize($warning-color, .2);
+    }
+  }
+}

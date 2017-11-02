@@ -3,7 +3,7 @@ import {render} from "react-dom";
 
 import Container from "./Components/Question/Question.component";
 
-import "../scss/main.scss";
+import "../scss/styles.scss";
 
 const container = document.getElementById("app");
 
